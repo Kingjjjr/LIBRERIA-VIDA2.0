@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regalos – Librería Vida</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap">
+  <style>
+    :root {
+      --azul: #3b82f6;
+      --azul-oscuro: #0a2a43;
+      --gris-claro: #f1f5f9;
+      --blanco: #ffffff;
+      --dorado: #d4af37;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--gris-claro);
+      color: var(--azul-oscuro);
+      margin: 0;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--azul-oscuro), var(--azul));
+      padding: 1em;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    header a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .filtros {
+      text-align: center;
+      padding: 1em;
+    }
+
+    .filtros button {
+      margin: 0.3em;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 20px;
+      background: var(--azul);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .filtros button:hover {
+      background: var(--dorado);
+    }
+
+    .grid-productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5em;
+      max-width: 1200px;
+      margin: 1em auto;
+      padding: 0 1em;
+    }
+
+    .producto {
+      background: var(--blanco);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 1em;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .producto:hover {
+      transform: scale(1.03);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      margin-bottom: 1em;
+    }
+
+    .producto h3 {
+      color: var(--azul);
+      margin-bottom: 0.3em;
+    }
+
+    footer {
+      background: var(--azul-oscuro);
+      color: white;
+      text-align: center;
+      padding: 1em;
+      margin-top: 2em;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2em;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1em;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: var(--azul);
+    }
+
+    /* Media Queries para tablets y móviles */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .filtros {
+        padding: 0.5em;
+      }
+
+      .filtros button {
+        margin: 0.3em 0.2em;
+        font-size: 0.9em;
+      }
+
+      .producto img {
+        height: 200px;
+      }
+
+      .modal-content {
+        padding: 1em;
+        max-width: 90%;
+      }
+
+      header h1 {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .filtros button {
+        width: 100%;
+        margin: 0.3em 0;
+      }
+
+      .producto img {
+        height: 180px;
+      }
+
+      .producto h3 {
+        font-size: 1rem;
+      }
+
+      .producto p {
+        font-size: 0.9rem;
+      }
+
+      .modal-content h2 {
+        font-size: 1.2rem;
+      }
+
+      .modal-content p {
+        font-size: 1rem;
+      }
+
+      header h1 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Librería Vida – Regalos</h1>
+  <a href="Untitled-1.html">Volver al inicio</a>
+</header>
+
+<div class="filtros">
+  <strong>Filtrar por tipo:</strong>
+  <button onclick="filtrar('all')">Todos</button>
+  <button onclick="filtrar('tazas')">Tazas</button>
+  <button onclick="filtrar('llaveros')">Llaveros</button>
+  <button onclick="filtrar('cuadernos')">Cuadernos</button>
+</div>
+
+<main class="grid-productos" id="productos">
+  <div class="producto tazas" onclick="abrirModal('taza-1')">
+    <img src="TAZA.jpeg" alt="Taza con versículo" />
+    <h3>Taza con versículo</h3>
+    <p>$285 MXN</p>
+  </div>
+</main>
+
+<!-- MODAL DE TAZA -->
+<div id="taza-1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal('taza-1')">&times;</span>
+    <img src="TAZA.jpeg" alt="Taza con versículo" />
+    <h2>Taza con versículo</h2>
+    <p>Cerámica de alta calidad, resistente al microondas y al lavavajillas. Con frases bíblicas inspiradoras.</p>
+    <p><strong>$285 MXN</strong></p>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Librería Vida – Todos los derechos reservados</p>
+</footer>
+
+<script>
+  function filtrar(categoria) {
+    const productos = document.querySelectorAll('.producto');
+    productos.forEach(p => {
+      p.style.display = (categoria === 'all' || p.classList.contains(categoria)) ? 'block' : 'none';
+    });
+  }
+
+  function abrirModal(id) {
+    document.getElementById(id).style.display = 'flex';
+  }
+
+  function cerrarModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+      event.target.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

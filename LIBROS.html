@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Libros – Librería Vida</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap">
+  <style>
+    :root {
+      --azul: #3b82f6;
+      --azul-oscuro: #0a2a43;
+      --gris-claro: #f1f5f9;
+      --blanco: #ffffff;
+      --dorado: #d4af37;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--gris-claro);
+      color: var(--azul-oscuro);
+      margin: 0;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--azul-oscuro), var(--azul));
+      padding: 1em;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.4rem;
+    }
+
+    header a {
+      color: white;
+      text-decoration: underline;
+    }
+
+    .filtros {
+      text-align: center;
+      padding: 1em;
+    }
+
+    .filtros button {
+      margin: 0.3em;
+      padding: 0.5em 1em;
+      border: none;
+      border-radius: 20px;
+      background: var(--azul);
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .filtros button:hover {
+      background: var(--dorado);
+    }
+
+    .grid-productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5em;
+      max-width: 1200px;
+      margin: 1em auto;
+      padding: 0 1em;
+    }
+
+    .producto {
+      background: var(--blanco);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 1em;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .producto:hover {
+      transform: scale(1.03);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      margin-bottom: 1em;
+    }
+
+    .producto h3 {
+      color: var(--azul);
+      margin-bottom: 0.3em;
+    }
+
+    footer {
+      background: var(--azul-oscuro);
+      color: white;
+      text-align: center;
+      padding: 1em;
+      margin-top: 2em;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 2em;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1em;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: var(--azul);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Librería Vida – Libros</h1>
+  <a href="Untitled-1.html">Volver al inicio</a>
+</header>
+
+<div class="filtros">
+  <strong>Filtrar por categoría:</strong>
+  <button onclick="filtrar('all')">Todos</button>
+  <button onclick="filtrar('devocional')">Devocional</button>
+  <button onclick="filtrar('teologia')">Teología</button>
+  <button onclick="filtrar('niños')">Niños</button>
+</div>
+
+<main class="grid-productos" id="productos">
+  <div class="producto devocional" onclick="abrirModal('devocional-1')">
+    <img src="INCENDIARIO.jpeg" alt="Libro Devocional" />
+    <h3>Devocional Diario</h3>
+    <p>$200 MXN</p>
+  </div>
+
+  <div class="producto teologia" onclick="abrirModal('teologia-1')">
+    <img src="TEOLOGIA.jpeg" alt="Libro Teología" />
+    <h3>Introducción a la Teología</h3>
+    <p>$320 MXN</p>
+  </div>
+
+  <div class="producto niños" onclick="abrirModal('ninos-1')">
+    <img src="WhatsApp Image 2025-08-05 at 5.20.22 PM.jpeg" alt="Libro para Niños" />
+    <h3>Historias Bíblicas para Niños</h3>
+    <p>$180 MXN</p>
+  </div>
+</main>
+
+<!-- MODALES -->
+<div id="devocional-1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal('devocional-1')">&times;</span>
+    <img src="INCENDIARIO.jpeg" alt="Libro Devocional" />
+    <h2>Devocional Diario</h2>
+    <p>Reflexiones para fortalecer tu fe cada día.</p>
+    <p><strong>$200 MXN</strong></p>
+  </div>
+</div>
+
+<div id="teologia-1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal('teologia-1')">&times;</span>
+    <img src="TEOLOGIA.jpeg" alt="Libro Teología" />
+    <h2>Introducción a la Teología</h2>
+    <p>Fundamentos bíblicos, doctrinas clave y visión cristocéntrica.</p>
+    <p><strong>$320 MXN</strong></p>
+  </div>
+</div>
+
+<div id="ninos-1" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal('ninos-1')">&times;</span>
+    <img src="WhatsApp Image 2025-08-05 at 5.20.22 PM.jpeg" alt="Libro para Niños" />
+    <h2>Historias Bíblicas para Niños</h2>
+    <p>Historias ilustradas con enseñanzas sencillas para los más pequeños.</p>
+    <p><strong>$180 MXN</strong></p>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Librería Vida – Todos los derechos reservados</p>
+</footer>
+
+<script>
+  function filtrar(categoria) {
+    const productos = document.querySelectorAll('.producto');
+    productos.forEach(p => {
+      p.style.display = (categoria === 'all' || p.classList.contains(categoria)) ? 'block' : 'none';
+    });
+  }
+
+  function abrirModal(id) {
+    document.getElementById(id).style.display = 'flex';
+  }
+
+  function cerrarModal(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    if (event.target.classList.contains('modal')) {
+      event.target.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>
