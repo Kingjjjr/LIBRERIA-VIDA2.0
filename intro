@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Librería Vida</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap">
+  <link rel="icon" href="favicon.png" type="image/png"/>
+  <style>
+    :root {
+      --azul-oscuro: #0a2a43;
+      --azul-claro: #3b82f6;
+      --gris-claro: #f1f5f9;
+      --dorado: #d4af37;
+      --blanco: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--gris-claro);
+      color: var(--azul-oscuro);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--azul-oscuro), var(--azul-claro));
+      color: var(--blanco);
+      padding: 1em;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+      width: 25px;
+      border-radius: 2px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--azul-claro);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--dorado);
+    }
+
+    .seccion {
+      padding: 2em 1em;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--azul-oscuro);
+      font-size: 2rem;
+    }
+
+    .grid-productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5em;
+    }
+
+    .producto {
+      background: var(--blanco);
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .producto:hover {
+      transform: scale(1.03);
+    }
+
+    .producto img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .producto h3 {
+      margin: 0;
+      padding: 1em;
+      color: var(--azul-claro);
+    }
+
+    .video-promocional {
+      display: flex;
+      justify-content: center;
+      margin: 2em auto;
+      max-width: 800px;
+    }
+
+    .video-promocional img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background: var(--azul-oscuro);
+      color: var(--blanco);
+      text-align: center;
+      padding: 1em;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 1000;
+    }
+
+    .whatsapp-float img {
+      width: 30px;
+      height: 30px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--azul-oscuro);
+        margin-top: 1em;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        color: var(--blanco);
+        padding: 1em;
+        border-top: 1px solid rgba(255,255,255,0.2);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images (2).png" alt="Logo Librería Vida" />
+      <h1>Librería Vida</h1>
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <nav id="nav">
+      <a href="index.html">Biblias</a>
+      <a href="regalos.html">Regalos</a>
+      <a href="libros.html">Libros</a>
+      <a href="cuadros.html">Cuadros</a>
+      <a href="#historia">Historia</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- Imagen en lugar del iframe incorrecto -->
+  <section class="video-promocional">
+    <img src="WhatsApp-Image-2021-06-11-at-6.04.37-PM.jpeg" alt="Imagen promocional" />
+  </section>
+
+  <section id="regalos" class="seccion">
+    <h2>Regalos</h2>
+    <div class="grid-productos">
+      <div class="producto">
+        <img src="TAZA.jpeg" alt="Taza con Versículo" />
+        <h3>Taza con versículo</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="cuadros" class="seccion">
+    <h2>Cuadros</h2>
+    <div class="grid-productos">
+      <div class="producto">
+        <img src="CUADRO.jpeg" alt="Cuadro Salmo 23" />
+        <h3>Cuadro Salmo 127</h3>
+      </div>
+    </div>
+  </section>
+
+  <section id="historia" class="seccion">
+    <h2>Nuestra Historia</h2>
+    <p>Aquí puedes contar la historia de tu librería, su misión, visión y valores. Habla sobre cómo empezó, el compromiso con tus clientes y todo lo que hace especial a "Librería Vida".</p>
+  </section>
+
+  <footer id="contacto">
+    <p>Contáctanos por WhatsApp: <a href="https://wa.me/52XXXXXXXXXX" style="color: var(--dorado);">+52 XXX XXX XXXX</a></p>
+    <p>&copy; 2025 Librería Vida</p>
+  </footer>
+
+  <a href="https://wa.me/52XXXXXXXXXX" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      nav.classList.toggle('active');
+    }
+  </script>
+
+</body>
+</html>
